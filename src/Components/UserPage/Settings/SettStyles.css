@@ -1,0 +1,43 @@
+.settings {
+    width: 70%;
+    margin: auto;
+    margin-top: 5vh;
+}
+
+.settings-avatarBlock {
+    background-color: #222;
+    padding: 10px;
+    display: flex;
+}
+
+.settings-avatarBlock-avatar {
+    background: var(--avatar);
+    width: 275px;
+    height: 400px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.settings-avatarBlock-set-upload_label {
+    color: #888;
+    border: 1px solid;
+    height: 40px;
+    width: 200px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1;
+}
+
+.settings-avatarBlock-set-upload {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    padding-left: 200px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 2;
+}

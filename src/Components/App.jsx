@@ -9,6 +9,7 @@ import Poster from "./Poster/Poster";
 import SignPage from "./SignPage/SignPage";
 import UserPage from "./UserPage/UserPage";
 import axios from "axios";
+import Settings from "./UserPage/Settings/Settings";
 
 export default function App() {
   const [items, setItems] = useState([]);
@@ -98,6 +99,15 @@ export default function App() {
                   <>
                     <NavElem />
                     <UserPage />
+                  </>
+                }
+              />
+              <Route
+                path="/user/settings"
+                element={
+                  <>
+                    <NavElem />
+                    <Settings />
                   </>
                 }
               />

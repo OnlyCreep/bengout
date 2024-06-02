@@ -3,13 +3,47 @@
     margin: auto;
     margin-top: 10vh;
     color: rgb(233, 233, 233);
-    display: flex;
 }
 
 .userPage-avatar {
-    width: 250px;
+    width: 275px;
+    height: 400px;
+    background: var(--img);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .userPage-globalInfo {
     margin-left: 50px;
+}
+
+.userPage-settBut {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    color: #999;
+    font-size: 1.2rem;
+    transition: filter 200ms;
+}
+
+.userPage-leaveBut {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    color: rgba(255, 8, 8, 0.8);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: filter 300ms;
+    text-decoration: none;
+}
+
+.userPage-settBut:hover {
+    filter: drop-shadow(0 0 5px #9999995b);
+}
+
+.userPage-leaveBut:hover {
+    filter: drop-shadow(0 0 5px rgba(255, 8, 8, 0.8));
 }

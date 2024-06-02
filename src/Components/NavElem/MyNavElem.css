@@ -4,6 +4,13 @@
   --bs-body-font-family: "Inter Tight", sans-serif;
 }
 
+.bg-body-tertiary {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+}
+
 .navbar {
     --bs-navbar-padding-x: 25px;
     --bs-navbar-padding-y: 25px;

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -8,7 +8,7 @@ import { Context } from "../Context";
 
 export default function NavElem() {
   const { isAuth } = useContext(Context);
-  console.log(isAuth);
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>

@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import "./UserStyles.css";
 import { Context } from "../Context";
 import axios from "axios";
+import { SlSettings } from "react-icons/sl";
+import { BiDoorOpen } from "react-icons/bi";
 
 export default function UserPage() {
   const { isAuth } = useContext(Context);
@@ -33,11 +35,16 @@ export default function UserPage() {
     <>
       {isLoaded && (
         <section className="userPage">
-          <img src={avatar} alt="" className="userPage-avatar"/>
+          <div style={{display: "flex"}}>
+          <div style={{"--img": `url(${avatar})`}} className="userPage-avatar"></div>
           <div className="userPage-globalInfo">
           <h1 className="userPage-globalInfo-login">{login}</h1>
           <h5 className="userPage-globalInfo-login">{email}</h5>
-          </div>
+          </div></div>
+          <a className="userPage-settBut" href="user/settings"><SlSettings/>Настройки</a>
+          <a className="userPage-leaveBut" href="login" onClick={()=>{
+            document.cookie = "session="
+          }}><BiDoorOpen/>Выйти</a>
         </section>
       )}
     </>
