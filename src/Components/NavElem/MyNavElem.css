@@ -1,0 +1,38 @@
+:root {
+  --bs-tertiary-bg-rgb: 20, 20, 20;
+  --bs-emphasis-color-rgb: 185, 100, 0;
+  --bs-body-font-family: "Inter Tight", sans-serif;
+}
+
+.navbar {
+    --bs-navbar-padding-x: 25px;
+    --bs-navbar-padding-y: 25px;
+    --bs-navbar-nav-link-padding-x: 50px;
+}
+
+.navbar-brand {
+  --bs-navbar-brand-margin-end: 50px;
+  --bs-navbar-brand-font-size: 28px;
+  font-weight: 800;
+}
+
+.nav-link {
+  --bs-nav-link-font-size: 18px;
+  --bs-nav-link-font-weight: 600;
+  --bs-nav-link-padding-y: 20px
+}
+
+.signElem {
+  font-size: 1.2rem;
+  border: 1px solid;
+  border-radius: 100px;
+  padding: 5px 30px;
+  font-weight: 600;
+  transition-property: background-color, border;
+  transition-duration: 300ms;
+}
+
+.signElem:hover {
+  background-color: white;
+  border: 1px solid white;
+}

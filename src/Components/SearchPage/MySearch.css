@@ -1,0 +1,216 @@
+.searchbar {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    margin-top: 5vh;
+    background-color: rgb(36, 36, 36);
+    align-items: start;
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+}
+
+.searchbar-sidebar {
+    margin-top: 1vh;
+    border-right: 1px solid rgb(83, 83, 83);
+}
+
+.searchbar-sidebar-opps {
+    list-style-type: none;
+    font-size: 2vh;
+    color: rgb(173, 173, 173);
+    padding: 15px 120px;
+}
+
+.searchbar-search {
+    margin: auto;
+    margin-top: 20px;
+    color: rgb(211, 211, 211);
+}
+
+.searchbar-search-input {
+    background-color: rgb(26, 26, 26);
+    border: none;
+    padding: 10px 40px;
+    padding-right: 220px;
+    border-radius: 50px;
+    color: rgb(173, 173, 173);
+}
+
+.searchbar-search-button {
+    border: none;
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+    background-color: rgb(26, 26, 26);
+    font-size: 20px;
+    color: rgb(173, 173, 173);
+    margin-left: 20px;
+    transition-property: background-color, transform;
+    transition-duration: 300ms;
+}
+
+.searchbar-search-button:hover {
+    background-color: black;
+}
+
+.searchbar-search-button-icon {
+    transition: transform 300ms;
+}
+
+.searchbar-search-button:active {
+    background-color: rgb(155, 155, 155);
+}
+
+.searchbar-search-button:active .searchbar-search-button-icon {
+    transform: scale(1.1);
+    fill: black;
+}
+
+.searchbar-sidebar-opps-stars {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.searchbar-sidebar-opps-stars-star {
+    height: 50px;
+    cursor: default;
+}
+
+.searchbar-sidebar-opps-stars-star-icon {
+    cursor: pointer;
+}
+
+.rate-star-right {
+    width: 15px;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+.rate-star-left {
+    width: 15px;
+    overflow: hidden;
+    transform: rotateY(180deg) translateY(-45px);
+    margin-left: 15px;
+}
+
+.rate-stars {
+    display: flex;
+    font-size: 30px;
+}
+
+.searchbar-sidebar-opps-year {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.searchbar-sidebar-opps-categ {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.searchbar-sidebar-opps-drop {
+    margin-top: 100px;
+    font-size: 1.2rem;
+    text-align: center;
+    border: 2px solid;
+    padding: 5px 10px;
+    border-radius: 100px;
+    cursor: pointer;
+    font-weight: 600;
+    transition-property: color, background-color, border;
+    transition-duration: 200ms;
+    user-select: none;
+}
+
+.searchbar-sidebar-opps-drop:hover {
+    background-color: #E96E00;
+    border: 2px solid #E96E00;
+    color: white;
+}
+
+.searchbar-sidebar-opps-drop:active {
+    background-color: white;
+    border: 2px solid white;
+    color: #E96E00;
+}
+
+.film-card-direct {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.films-card {
+    margin-top: 50px;
+    display: flex;
+}
+
+.film-card-info {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    padding-left: 20px;
+}
+
+.films-card-img {
+    width: 165px;
+    height: 250px;
+}
+
+.films-card-name {
+    color: rgb(201, 201, 201);
+}
+
+.films-card-genres {
+    color: rgb(141, 141, 141);
+}
+
+.films-card-buttons {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    justify-content: space-between;
+    margin-left: 20px;
+}
+
+.films-card-buttons-like {
+    border: 1px solid;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 35px;
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+    transition-property: background-color, color, border;
+    transition-duration: 300ms;
+}
+
+.films-card-buttons-view {
+    font-size: 1.2rem;
+    border: 1px solid;
+    border-radius: 100px;
+    padding: 5px 20px;
+    cursor: pointer;
+    user-select: none;
+    transition-property: background-color, color, border;
+    transition-duration: 300ms;
+}
+
+.films-card-buttons-like:hover {
+    background-color: white;
+    border: 1px solid white;
+    color: red;
+}
+
+.films-card-buttons-view:hover {
+    background-color: #E96E00;
+    border: 1px solid #E96E00;
+    color: white;
+}
+
+.films-card-buttons-viewLink {
+    color: rgb(182, 182, 182);
+}

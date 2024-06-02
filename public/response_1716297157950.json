@@ -1,0 +1,452 @@
+{
+  "total": 700,
+  "totalPages": 35,
+  "items": [
+    {
+      "kinopoiskId": 4414587,
+      "imdbId": "tt5177120",
+      "nameRu": "Министерство неджентльменских дел",
+      "nameEn": null,
+      "nameOriginal": "The Ministry of Ungentlemanly Warfare",
+      "countries": [
+        {
+          "country": "США"
+        },
+        {
+          "country": "Великобритания"
+        },
+        {
+          "country": "Турция"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "драма"
+        },
+        {
+          "genre": "боевик"
+        },
+        {
+          "genre": "военный"
+        },
+        {
+          "genre": "история"
+        }
+      ],
+      "ratingKinopoisk": 7.1,
+      "ratingImdb": 7.3,
+      "year": 2024,
+      "type": "FILM",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/4414587.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/4414587.jpg"
+    },
+    {
+      "kinopoiskId": 5363155,
+      "imdbId": "tt28495849",
+      "nameRu": "Универ. 13 лет спустя",
+      "nameEn": null,
+      "nameOriginal": null,
+      "countries": [
+        {
+          "country": "Россия"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "комедия"
+        }
+      ],
+      "ratingKinopoisk": null,
+      "ratingImdb": null,
+      "year": 2024,
+      "type": "TV_SERIES",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/5363155.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/5363155.jpg"
+    },
+    {
+      "kinopoiskId": 1334852,
+      "imdbId": null,
+      "nameRu": "Сто лет тому вперёд",
+      "nameEn": null,
+      "nameOriginal": null,
+      "countries": [
+        {
+          "country": "Россия"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "фантастика"
+        },
+        {
+          "genre": "приключения"
+        }
+      ],
+      "ratingKinopoisk": 7.7,
+      "ratingImdb": 6.6,
+      "year": 2024,
+      "type": "FILM",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/1334852.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/1334852.jpg"
+    },
+    {
+      "kinopoiskId": 1355059,
+      "imdbId": "tt12112298",
+      "nameRu": "Беспринципные",
+      "nameEn": null,
+      "nameOriginal": null,
+      "countries": [
+        {
+          "country": "Россия"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "комедия"
+        }
+      ],
+      "ratingKinopoisk": 7.7,
+      "ratingImdb": 6.3,
+      "year": 2020,
+      "type": "TV_SERIES",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/1355059.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/1355059.jpg"
+    },
+    {
+      "kinopoiskId": 1394131,
+      "imdbId": "tt12637874",
+      "nameRu": "Fallout",
+      "nameEn": null,
+      "nameOriginal": null,
+      "countries": [
+        {
+          "country": "США"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "драма"
+        },
+        {
+          "genre": "фантастика"
+        },
+        {
+          "genre": "приключения"
+        },
+        {
+          "genre": "боевик"
+        }
+      ],
+      "ratingKinopoisk": 8.1,
+      "ratingImdb": 8.5,
+      "year": 2024,
+      "type": "TV_SERIES",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/1394131.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/1394131.jpg"
+    },
+    {
+      "kinopoiskId": 5249455,
+      "imdbId": "tt27114092",
+      "nameRu": "Майор Гром: Игра",
+      "nameEn": null,
+      "nameOriginal": null,
+      "countries": [
+        {
+          "country": "Россия"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "приключения"
+        },
+        {
+          "genre": "боевик"
+        }
+      ],
+      "ratingKinopoisk": null,
+      "ratingImdb": null,
+      "year": 2024,
+      "type": "FILM",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/5249455.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/5249455.jpg"
+    },
+    {
+      "kinopoiskId": 5452650,
+      "imdbId": null,
+      "nameRu": "Огненный лис",
+      "nameEn": null,
+      "nameOriginal": null,
+      "countries": [
+        {
+          "country": "Россия"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "приключения"
+        },
+        {
+          "genre": "семейный"
+        },
+        {
+          "genre": "документальный"
+        }
+      ],
+      "ratingKinopoisk": null,
+      "ratingImdb": null,
+      "year": 2024,
+      "type": "FILM",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/5452650.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/5452650.jpg"
+    },
+    {
+      "kinopoiskId": 4903012,
+      "imdbId": "tt25135186",
+      "nameRu": "Страсти по Матвею",
+      "nameEn": null,
+      "nameOriginal": null,
+      "countries": [
+        {
+          "country": "Россия"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "мелодрама"
+        },
+        {
+          "genre": "комедия"
+        }
+      ],
+      "ratingKinopoisk": 7.5,
+      "ratingImdb": null,
+      "year": 2023,
+      "type": "FILM",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/4903012.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/4903012.jpg"
+    },
+    {
+      "kinopoiskId": 5309802,
+      "imdbId": "tt28435317",
+      "nameRu": "Калимба",
+      "nameEn": null,
+      "nameOriginal": null,
+      "countries": [
+        {
+          "country": "Россия"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "драма"
+        },
+        {
+          "genre": "детектив"
+        }
+      ],
+      "ratingKinopoisk": null,
+      "ratingImdb": null,
+      "year": 2024,
+      "type": "TV_SERIES",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/5309802.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/5309802.jpg"
+    },
+    {
+      "kinopoiskId": 1338024,
+      "imdbId": "tt11389872",
+      "nameRu": "Планета обезьян: Новое царство",
+      "nameEn": null,
+      "nameOriginal": "Kingdom of the Planet of the Apes",
+      "countries": [
+        {
+          "country": "США"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "фантастика"
+        },
+        {
+          "genre": "приключения"
+        },
+        {
+          "genre": "боевик"
+        }
+      ],
+      "ratingKinopoisk": null,
+      "ratingImdb": null,
+      "year": 2024,
+      "type": "FILM",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/1338024.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/1338024.jpg"
+    },
+    {
+      "kinopoiskId": 4672769,
+      "imdbId": "tt13923084",
+      "nameRu": "Пацан против всех",
+      "nameEn": null,
+      "nameOriginal": "Boy Kills World",
+      "countries": [
+        {
+          "country": "США"
+        },
+        {
+          "country": "Германия"
+        },
+        {
+          "country": "ЮАР"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "боевик"
+        }
+      ],
+      "ratingKinopoisk": null,
+      "ratingImdb": 6.7,
+      "year": 2023,
+      "type": "FILM",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/4672769.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/4672769.jpg"
+    },
+    {
+      "kinopoiskId": 4902648,
+      "imdbId": "tt14539740",
+      "nameRu": "Годзилла и Конг: Новая империя",
+      "nameEn": null,
+      "nameOriginal": "Godzilla x Kong: The New Empire",
+      "countries": [
+        {
+          "country": "США"
+        },
+        {
+          "country": "Австралия"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "фантастика"
+        },
+        {
+          "genre": "боевик"
+        }
+      ],
+      "ratingKinopoisk": 6.4,
+      "ratingImdb": 6.5,
+      "year": 2024,
+      "type": "FILM",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/4902648.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/4902648.jpg"
+    },
+    {
+      "kinopoiskId": 5331465,
+      "imdbId": "tt28758053",
+      "nameRu": "Я знаю, кто тебя убил",
+      "nameEn": null,
+      "nameOriginal": null,
+      "countries": [
+        {
+          "country": "Россия"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "триллер"
+        },
+        {
+          "genre": "детектив"
+        }
+      ],
+      "ratingKinopoisk": 7.4,
+      "ratingImdb": null,
+      "year": 2024,
+      "type": "TV_SERIES",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/5331465.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/5331465.jpg"
+    },
+    {
+      "kinopoiskId": 749562,
+      "imdbId": "tt2788316",
+      "nameRu": "Сёгун",
+      "nameEn": null,
+      "nameOriginal": "Shôgun",
+      "countries": [
+        {
+          "country": "США"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "драма"
+        },
+        {
+          "genre": "приключения"
+        },
+        {
+          "genre": "боевик"
+        },
+        {
+          "genre": "военный"
+        },
+        {
+          "genre": "история"
+        }
+      ],
+      "ratingKinopoisk": 8.1,
+      "ratingImdb": 8.8,
+      "year": 2024,
+      "type": "TV_SERIES",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/749562.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/749562.jpg"
+    },
+    {
+      "kinopoiskId": 1402937,
+      "imdbId": "tt10720352",
+      "nameRu": "Артур, ты король",
+      "nameEn": null,
+      "nameOriginal": "Arthur the King",
+      "countries": [
+        {
+          "country": "США"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "драма"
+        },
+        {
+          "genre": "приключения"
+        }
+      ],
+      "ratingKinopoisk": 7.9,
+      "ratingImdb": 7,
+      "year": 2024,
+      "type": "FILM",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/1402937.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/1402937.jpg"
+    },
+    {
+      "kinopoiskId": 5307847,
+      "imdbId": "tt28326350",
+      "nameRu": "Постучись в мою дверь в Москве",
+      "nameEn": null,
+      "nameOriginal": null,
+      "countries": [
+        {
+          "country": "Россия"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "мелодрама"
+        }
+      ],
+      "ratingKinopoisk": 5,
+      "ratingImdb": null,
+      "year": 2024,
+      "type": "TV_SERIES",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/5307847.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/5307847.jpg"
+    }
+  ]
+}

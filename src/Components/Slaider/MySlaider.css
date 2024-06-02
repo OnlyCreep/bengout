@@ -1,0 +1,119 @@
+.sliderSection {
+    display: flex;
+    margin-top: 50px;
+    overflow: hidden;
+    align-items: center;
+    height: 400px;
+    user-select: none;
+}
+
+.slaider {
+    display: grid;
+    grid-template-columns: repeat(21, 160px);
+    transform: translate(var(--marg));
+    transition: transform 600ms;
+}
+
+.elems {
+    width: 83%;
+    margin: auto;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: #060203;
+}
+
+.slaider-itemElem-dataGenre {
+    color: #bd9b7e;
+}
+
+.slaider-itemElem-imgElem {
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    height: 225px;
+    width: 150px;
+    transition: opacity 300ms;
+}
+
+.slaider-itemElem:hover .slaider-itemElem-imgElem{
+    opacity: .6;
+}
+
+.slaider-itemElem:hover .slaider-itemElem-switchElem {
+    color: #E96E00;
+}
+
+.slaider-itemElem:hover .slaider-itemElem-dataGenre {
+    color: #BB5800;
+}
+
+.slaider-itemElem-switchElem {
+    width: 150px;
+    font-size: 15px;
+    color: #BB5800;
+    transition: color 300ms;
+}
+
+.slaider-itemElem-dataGenre{
+    font-size: 15px;
+    color: #504740;
+    transition: color 300ms;
+}
+
+.arrows {
+    width: 95%;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%);
+}
+
+.arrows-arrow {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 100%;
+    padding: 10px;
+    font-size: 3rem;
+    stroke-width: 15px;
+    margin-top: -75px;
+    cursor: pointer;
+    transition: transform 200ms;
+    position: absolute;
+    color: #C86D1C;
+}
+
+.arrows-arrow:active {
+    transform: scale(0.8);
+}
+
+.moreBut {
+    height: 225px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    transition: transform 400ms;
+    cursor: pointer;
+    color: #C86D1C;
+}
+
+.moreBut:hover {
+    transform: scale(1.1);
+}
+
+.moreBut-moreButArrow {
+    background-color: #c5c5c5;
+    font-size: 3rem;
+    padding: 10px;
+    color: #494949;
+    border-radius: 100%;
+    margin-bottom: 10px;
+    transition: background-color 400ms;
+}
+
+.moreBut:hover .moreButArrow{
+    background-color: #dfdfdf;
+}

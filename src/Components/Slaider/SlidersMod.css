@@ -1,0 +1,25 @@
+@media (min-width: 1280px) {
+    .slider-1920px {
+        display: none;
+    }
+}
+@media (min-width: 1024px) {
+    .slider-1280px {
+        display: none;
+    }
+}
+@media (min-width: 992px) {
+  .slider-1024px {
+    display: none;
+  }
+}
+@media (min-width: 820px) {
+    .slider-992px {
+        display: none;
+    }
+}
+@media (min-width: 360px) {
+    .slider-820px {
+        display: none;
+    }
+}

@@ -1,0 +1,99 @@
+.modal {
+    top: 30%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%);
+}
+
+.yearBut {
+    background-color: transparent;
+    border: none;
+}
+
+.yearBut:hover {
+    background-color: transparent;
+    border: none;
+    color: rgb(150, 150, 150);
+}
+
+.yearBut:active {
+    background-color: transparent;
+    border: none;
+    color: rgb(150, 150, 150);
+}
+
+.yearChanger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    overflow: hidden;
+}
+
+.yearChanger-years {
+    display: flex;
+    flex-direction: column;
+    transition: transform 200ms;
+    cursor: default
+}
+
+.yearChanger-arrows {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    height: 16vh;
+    justify-content: space-between;
+    font-size: 25px;
+}
+
+.yearChanger-arrows-arrow {
+    cursor: pointer;
+    color: #EE7F1D;
+}
+
+.yearChanger-arrows-arrow:active {
+    transition: transform 200ms;
+    transform: scale(1.1);
+}
+
+.modal-header {
+    --bs-modal-inner-border-radius: 0;
+}
+
+.yearChanger-years-year {
+    color: #EE7F1D;
+}
+
+.modal-footer {
+    background-color: rgb(36, 36, 36);
+    border-radius: 0;
+    border-top: 1px solid rgb(51, 51, 51);
+}
+
+.splashLine {
+    color: #EE7F1D;
+}
+
+.btn-primary {
+    --bs-btn-active-color: rgb(63, 63, 63);
+    --bs-btn-active-bg: transparent;
+    --bs-btn-active-border-color: transparent;
+}
+
+.saveBut {
+    background-color: #EE7F1D;
+    color: white;
+    border: 1px solid #EE7F1D;
+}
+
+.saveBut:hover {
+    background-color: white;
+    color: #EE7F1D;
+    border: 1px solid white;
+}
+
+.saveBut:active {
+    --bs-btn-active-color: white;
+    --bs-btn-active-bg: #EE7F1D;
+    --bs-btn-active-border-color: #EE7F1D;
+}

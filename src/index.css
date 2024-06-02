@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  background-color: rgb(26, 26, 26);
+}
+
+.film-title {
+  margin-top: 5%;
+  margin-left: 10%;
+  color: #E96E00;
+}

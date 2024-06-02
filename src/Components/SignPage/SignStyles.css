@@ -1,0 +1,283 @@
+.signSection {
+    height: 87vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signSection-sign_container {
+    width: 1000px;
+    height: 500px;
+    border: 1px solid #E96E00;
+    border-radius: 25px;
+    transition: border 1s;
+    display: flex;
+}
+
+.signSection-sign_container-visibleBlock {
+    height: 100%;
+    width: 50%;
+    background-color: #E96E00;
+    color: #e7e7e7;
+    border-radius: 20px;
+    border-top-left-radius: var(--borderLf);
+    border-bottom-left-radius: var(--borderLf);
+    border-top-right-radius: var(--borderRg);
+    border-bottom-right-radius: var(--borderRg);
+    transform: translateX(0%);
+    transition-property: border-radius, transform, background-color, color;
+    transition-duration: 1s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signSection-sign_container-signElem {
+    height: 100%;
+    width: 50%;
+    transition-property: transform opacity;
+    transition-duration: 1s;
+}
+
+.signSection-sign_container-visibleBlock-title {
+    padding-top: 100px;
+    margin: 0;
+    font-size: 2.2rem;
+    height: 142px;
+}
+
+.signSection-sign_container-visibleBlock-title::after {
+    content: "";
+}
+
+.isSign-false::after {
+    animation: sign 1s both;
+}
+
+.isSign-true::after {
+    animation: login 1s both;
+}
+
+.isSign-false {
+    animation: sign 1s both;
+}
+
+.isSign-true {
+    animation: login 1s both;
+}
+
+.signSection-sign_container-visibleBlock-question {
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 100px;
+}
+
+.signSection-sign_container-visibleBlock-question::after {
+    content: "";
+}
+
+.signSection-sign_container-signElem::after {
+    content: "";
+}
+
+.signSection-sign_container-visibleBlock-autoSign {
+    margin-top: 20px;
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.signSection-sign_container-visibleBlock-autoSign-icon {
+    border: 2px solid;
+    font-size: 45px;
+    padding: 3px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition-property: border, background-color, color;
+    transition-duration: 400ms;
+}
+
+.signSection-sign_container-visibleBlock-autoSign-icon:hover {
+    background-color: var(--bcClrSign);
+    color: var(--colorSign);
+    border: 2px solid var(--bcClrSign);
+}
+
+.signSection-sign_container-signElem-panel {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 70%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.signSection-sign_container-signElem-panel-inpt-reg {
+    background-color: transparent;
+    border: 1px solid #e7e7e7;
+    outline: none;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #e7e7e7;
+    border-radius: 10px;
+    transition: border 300ms;
+}
+
+.signSection-sign_container-signElem-panel-inpt-reg:focus {
+    border: 1px solid #E96E00;
+}
+
+.signSection-sign_container-signElem-panel-butt-reg {
+    background-color: #e7e7e7;
+    position: absolute;
+    bottom: 50px;
+    width: 200px;
+    color: #E96E00;
+    padding: 10px 0;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition-property: background-color, color, border;
+    transition-duration: 300ms;
+    border: 2px solid transparent;
+}
+
+.signSection-sign_container-signElem-panel-butt-reg:hover {
+    color: #e7e7e7;
+    background-color: #E96E00;
+}
+
+.signSection-sign_container-signElem-panel-butt-reg:active {
+    background-color: #e7e7e7;
+    color: #E96E00;
+    border: 2px solid #E96E00;
+}
+
+.signSection-sign_container-signElem-panel-inpt-sign {
+    background-color: transparent;
+    outline: none;
+    border: 1px solid #E96E00;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #e7e7e7;
+    border-radius: 10px;
+    transition: border 300ms;
+}
+
+.signSection-sign_container-signElem-panel-inpt-sign:focus {
+    border: 1px solid #e7e7e7;
+}
+
+.signSection-sign_container-signElem-panel-butt-sign {
+    position: absolute;
+    bottom: 50px;
+    width: 200px;
+    color: #e7e7e7;
+    padding: 10px 0;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background-color: #E96E00;
+    transition-property: background-color, color, border;
+    transition-duration: 300ms;
+    border: 2px solid transparent;
+}
+
+.signSection-sign_container-signElem-panel-butt-sign:hover {
+    color: #E96E00;
+    background-color: #e7e7e7;
+}
+
+.signSection-sign_container-signElem-panel-butt-sign:active {
+    background-color: #E96E00;
+    color: #e7e7e7;
+    border: 2px solid #e7e7e7;
+}
+
+.signSection-sign_container-signElem-panel-validVer {
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+}
+
+.signSection-sign_container-signElem-panel-validVer-label {
+    height: 0;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    color: rgb(255, 0, 0);
+    font-weight: 300;
+}
+
+@keyframes sign {
+    0% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 0;
+        fill: none;
+        color: transparent;
+        content: var(--textTitle);
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        content: var(--textTitle);
+    }
+}
+
+
+@keyframes login {
+    0% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 0;
+        fill: none;
+        color: transparent;
+        content: var(--textTitle);
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        content: var(--textTitle);
+    }
+}
+
+@keyframes panelAnim_true {
+    0% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes panelAnim_false {
+    0% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

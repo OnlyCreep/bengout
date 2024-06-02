@@ -1,0 +1,54 @@
+.swiper {
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(21, var(--gridWidth));
+  overflow: hidden;
+  margin-top: 10vh;
+  width: var(--swiperWidth);
+}
+
+.swiper-card {
+  height: var(--gridHeight);
+  width: var(--elemWidth);
+  justify-self: center;
+  margin-left: var(--marginLeft);
+}
+
+.swiper-card-poster {
+  background-image: var(--urlPost);
+  background-size: cover;
+  background-position: center;
+  width: var(--poserWidth);
+  height: var(--poserHeight);
+}
+
+.swiper-card-name {
+  margin-top: 1vh;
+  margin-bottom: 0.5vh;
+  color: #EE8C34;
+}
+
+.swiper-card-info {
+  color: #C86D1C;
+  opacity: 0.4;
+  font-size: 2vh;
+}
+
+.swiper-arrows {
+  display: flex;
+  height: 10vh;
+  width: 95%;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  align-self: center;
+}
+
+.swiper-arrows-arrow {
+  height: 6vh;
+  width: 6vh;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  position: absolute;
+}

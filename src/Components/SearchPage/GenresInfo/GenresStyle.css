@@ -1,0 +1,52 @@
+.categBut-genr {
+    background-color: transparent;
+    border: none;
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.categBut-genr:hover {
+    background-color: transparent;
+    border: none;
+    color: rgb(150, 150, 150);
+}
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    width: 450px;
+}
+
+.genres-genre-str {
+    background-color: rgb(51, 51, 51);
+    color: rgb(219, 219, 219);
+    border-radius: 20px;
+    padding: 2px 10px;
+    white-space: nowrap;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 200ms;
+    display: flex;
+    align-items: center;
+}
+
+.genres-genre-str:hover {
+    background-color: rgb(70, 70, 70);
+}
+
+.genres-closeBut {
+    opacity: 0;
+    width: 0;
+    transition-property: width, opacity;
+    transition-duration: 300ms;
+}
+
+.genres-genre-str:hover .genres-closeBut {
+    opacity: 1;
+    width: 18px;
+    margin-left: 5px;
+}

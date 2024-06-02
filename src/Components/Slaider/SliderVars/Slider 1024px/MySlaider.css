@@ -1,0 +1,107 @@
+.slider-1920px {
+  display: flex;
+  margin-top: 50px;
+  background-color: rgb(26, 26, 26);
+}
+
+.slaider-title {
+  margin-left: 10%;
+  margin-top: 10vh;
+  color: #ee7f1d;
+}
+
+.slaider {
+  display: grid;
+  grid-template-columns: repeat(21, 160px);
+  overflow-x: hidden;
+  margin-left: var(--margin);
+  transition: margin 400ms;
+}
+
+a {
+  text-decoration: none;
+  color: #bb5800;
+}
+
+.slaider-itemElem-dataGenre {
+  color: #b5b2aa;
+}
+
+.slaider-itemElem-imgElem {
+  height: 70%;
+  width: 90%;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: transform 200ms;
+}
+
+.slaider .itemElem .imgElem:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+.slaider-itemElem-switchElem {
+  width: 150px;
+  font-size: 15px;
+  color: #bb5800;
+}
+
+.sideBar {
+  height: 350px;
+  width: 160px;
+  background-color: rgb(26, 26, 26);
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  padding-bottom: 50px;
+}
+
+.sideBar-arrow {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 100%;
+  padding: 10px;
+  font-size: 3rem;
+  stroke-width: 15px;
+  margin-top: -75px;
+  cursor: pointer;
+  transition: transform 200ms;
+  color: #c86d1c;
+  background-color: rgb(26, 26, 26);
+}
+
+.sideBar-arrow:active {
+  transform: scale(0.8);
+}
+
+.moreBut {
+  height: 225px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  transition: transform 400ms;
+  cursor: pointer;
+  color: #c86d1c;
+}
+
+.moreBut:hover {
+  transform: scale(1.1);
+}
+
+.moreBut-moreButArrow {
+  background-color: #c5c5c5;
+  font-size: 3rem;
+  padding: 10px;
+  color: #494949;
+  border-radius: 100%;
+  margin-bottom: 10px;
+  transition: background-color 400ms;
+}
+
+.moreBut:hover .moreButArrow {
+  background-color: #dfdfdf;
+}
