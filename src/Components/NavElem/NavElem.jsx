@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "./MyNavElem.css";
 import { CiUser } from "react-icons/ci";
+import { Context } from "../Context";
 
 export default function NavElem() {
+  const { isAuth } = useContext(Context);
+  console.log(isAuth);
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
@@ -20,9 +23,15 @@ export default function NavElem() {
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
-            <a href="/login" className="signElem">
-              Войти
-            </a>
+            {isAuth ? (
+              <a href="/user">
+                <CiUser className="signElem-user" />
+              </a>
+            ) : (
+              <a href="/login" className="signElem-sign">
+                Войти
+              </a>
+            )}
           </Navbar.Text>
         </Navbar.Collapse>
       </Container>

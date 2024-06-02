@@ -22,7 +22,7 @@
   --bs-nav-link-padding-y: 20px
 }
 
-.signElem {
+.signElem-sign {
   font-size: 1.2rem;
   border: 1px solid;
   border-radius: 100px;
@@ -32,7 +32,21 @@
   transition-duration: 300ms;
 }
 
-.signElem:hover {
+.signElem-sign:hover {
+  background-color: white;
+  border: 1px solid white;
+}
+
+.signElem-user {
+  font-size: 2.2rem;
+  border: 1px solid;
+  border-radius: 100px;
+  padding: 5px;
+  transition-property: background-color, border;
+  transition-duration: 300ms;
+}
+
+.signElem-user:hover {
   background-color: white;
   border: 1px solid white;
 }

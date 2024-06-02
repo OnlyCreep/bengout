@@ -1,0 +1,15 @@
+.userPage {
+    width: 80%;
+    margin: auto;
+    margin-top: 10vh;
+    color: rgb(233, 233, 233);
+    display: flex;
+}
+
+.userPage-avatar {
+    width: 250px;
+}
+
+.userPage-globalInfo {
+    margin-left: 50px;
+}

@@ -1,28 +1,23 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./SignStyles.css";
 import { FaFacebookF, FaTwitter } from "react-icons/fa6";
 import { IoLogoGoogleplus, IoLogoVk } from "react-icons/io";
 import SignPanel from "./Panels/SignPanel";
 import RegPanel from "./Panels/RegPanel";
-import axios from "axios";
+import { Context } from "../Context";
 
 export default function SignPage() {
   const visBlock = useRef(null);
   const [isSign, setSign] = useState(false);
   const [blockPos, setPos] = useState(-100);
   const [panel, setPanel] = useState(<SignPanel />);
+  const {isAuth} = useContext(Context)
 
   useEffect(() => {
-    if (document.cookie.split("=")[1]) {
-      axios
-        .post("http://localhost:4000/test", {
-          id: document.cookie.split("=")[1],
-        })
-        .then(() => {
-          document.location.href = "/user"
-        });
+    if (isAuth) {
+      document.location.href = "/user"
     }
-  }, [null]);
+  }, [isAuth]);
 
   document.title = "Войти | Регистрация";
 

@@ -25,8 +25,8 @@ con.connect(function (err) {
 
 app.post("/create", (req, res) => {
     const { login, pass, email } = req.body;
-  const values = [login, pass, email];
-  const sql = "INSERT INTO `info`(`login`, `pass`, `email`) VALUES (?)";
+  const values = [login, pass, email, "https://kinopoiskapiunofficial.tech/images/posters/kp/1402937.jpg"];
+  const sql = "INSERT INTO `info`(`login`, `pass`, `email`, `avatarUrl`) VALUES (?)";
   con.query(sql, [values], (err, result) => {
     const sessionId = uuid();
     sessions[sessionId] = { login, pass };
@@ -58,12 +58,23 @@ app.post("/login", (req, res) => {
 
 app.post("/test", (req, res) => {
   const { id } = req.body;
+  const user = sessions[id].login
   const sql = "SELECT * FROM `info` WHERE `login` LIKE (?)";
-  con.query(sql, sessions[id].login, (err, result) => {
+  con.query(sql, user, (err, result) => {
     if (err) return res.json({ Error: "Error singup query" });
     else if (result == "") return res.json("Failed");
     else if (sessions[id].pass == result[0].pass) return res.json("Success");
     else return res.json("Failed");
+  });
+});
+
+app.post("/getUser", (req, res) => {
+  const {id} = req.body
+  const user = sessions[id].login
+  const sql = "SELECT * FROM `info` WHERE `login` LIKE (?)";
+  con.query(sql, user, (err, result) => {
+    if(err) return res.json(err)
+    return res.json(result)
   });
 });
 

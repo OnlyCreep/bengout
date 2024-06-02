@@ -8,10 +8,13 @@ import FilmPage from "./FilmPage/FilmPage";
 import Poster from "./Poster/Poster";
 import SignPage from "./SignPage/SignPage";
 import UserPage from "./UserPage/UserPage";
+import axios from "axios";
 
 export default function App() {
   const [items, setItems] = useState([]);
   const [urlFilm, setUrl] = useState("");
+  const [isAuth, setAuth] = useState(false);
+  const [isLoaded, setDone] = useState(false);
 
   useEffect(() => {
     fetch("response_1715176709774.json", {
@@ -25,64 +28,83 @@ export default function App() {
       .then((json) => setItems(json.items))
       .catch((err) => console.log(err));
   }, [null]);
+
+  useEffect(() => {
+    if (document.cookie.split("=")[1]) {
+      axios
+        .post("http://localhost:4000/test", {
+          id: document.cookie.split("=")[1],
+        })
+        .then((res) => {
+          if (res.data == "Success") setAuth(true);
+          else setAuth(false);
+        })
+        .then(() => setDone(true));
+    } else {
+      setAuth(false);
+      setDone(true);
+    }
+  }, [null]);
   return (
     <>
-      <BrowserRouter>
-        <Context.Provider value={{ items, setUrl }}>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <NavElem />
-                  <h1 className="film-title">Фильмы и сериалы</h1>
-                  <Slaider />
-                  <h1 className="film-title">Награды и премии фильмов</h1>
-                  <Poster />
-                </>
-              }
-            />
-            <Route
-              path="/search"
-              element={
-                <>
-                  <NavElem />
-                  <Search />
-                </>
-              }
-            />
-            <Route
-              path={`/film:${
-                urlFilm ? urlFilm : document.location.pathname.split(":")[1]
-              }`}
-              element={
-                <>
-                  <NavElem />
-                  <FilmPage />
-                </>
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <>
-                  <NavElem />
-                  <SignPage />
-                </>
-              }
-            />
-            <Route
-              path="/user"
-              element={
-                <>
-                  <NavElem />
-                  <UserPage />
-                </>
-              }
-            />
-          </Routes>
-        </Context.Provider>
-      </BrowserRouter>
+      {isLoaded && (
+        <BrowserRouter>
+          <Context.Provider value={{ items, setUrl, isAuth }}>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <NavElem />
+                    <h1 className="film-title">Фильмы и сериалы</h1>
+                    <Slaider />
+                    <h1 className="film-title">Награды и премии фильмов</h1>
+                    <Poster />
+                  </>
+                }
+              />
+              <Route
+                path="/search"
+                element={
+                  <>
+                    <NavElem />
+                    <Search />
+                  </>
+                }
+              />
+              <Route
+                path={`/film:${
+                  urlFilm ? urlFilm : document.location.pathname.split(":")[1]
+                }`}
+                element={
+                  <>
+                    <NavElem />
+                    <FilmPage />
+                  </>
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  <>
+                    <NavElem />
+                    <SignPage />
+                  </>
+                }
+              />
+              <Route
+                path="/user"
+                element={
+                  <>
+                    <NavElem />
+                    <UserPage />
+                  </>
+                }
+              />
+            </Routes>
+          </Context.Provider>
+        </BrowserRouter>
+      )}
     </>
   );
 }
