@@ -8,6 +8,7 @@ export default function Settings() {
   const [login, setLogin] = useState("");
   const [email, setEmail] = useState("");
   const [newAvatar, setNewAv] = useState("");
+  const [file, setFile] = useState();
 
   useEffect(() => {
     if (document.cookie.split("=")[1]) {
@@ -22,13 +23,25 @@ export default function Settings() {
         });
     } else document.location.href = "/login";
   }, [null]);
+
+  function upload() {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("id", document.cookie.split("=")[1]);
+    axios
+      .post("http://localhost:4000/updateAvatar", formData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => console.log(e));
+  }
   return (
     <section className="settings">
       <h4>Аватар профиля</h4>
       <div className="settings-avatarBlock">
         <div
           className="settings-avatarBlock-avatar"
-          style={{ "--avatar": `url(${avatar})` }}
+          style={{ "--avatar": `url(images/${avatar})` }}
         ></div>
         <div className="settings-avatarBlock-set">
           <div>
@@ -54,26 +67,16 @@ export default function Settings() {
             </label>
             <input
               type="file"
-              accept="image/*"
               className="settings-avatarBlock-set-upload"
               id="imgInp"
               onChange={(e) => {
-                setAvatar(URL.createObjectURL(e.target.files[0]));
-                setNewAv(URL.createObjectURL(e.target.files[0]));
+                setFile(e.target.files[0]);
+                console.log(e.target.files[0]);
               }}
             />
           </div>
         </div>
-        <button
-          className="settings-avatarBlock-saveBut"
-          onClick={() => {
-            axios
-              .post("http://localhost:4000/updateAvatar", {
-                id: document.cookie.split("=")[1],
-                url: avatar
-              })
-          }}
-        >
+        <button className="settings-avatarBlock-saveBut" onClick={upload}>
           Сохранить
         </button>
       </div>

@@ -3,10 +3,11 @@ const mysql = require("mysql");
 const cors = require("cors");
 const { v4: uuid } = require("uuid");
 const sessions = require("./sessions");
-
+const multer = require("multer");
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.static(__dirname));
 
 const con = mysql.createConnection({
   host: "localhost",
@@ -14,6 +15,17 @@ const con = mysql.createConnection({
   password: "root",
   database: "users",
 });
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    return cb(null, "../../public/images");
+  },
+  filename: function (req, file, cb) {
+    return cb(null, `${Date.now()}_${file.originalname}`);
+  },
+});
+
+const upload = multer({ storage });
 
 app.post("/create", (req, res) => {
   const { login, pass, email } = req.body;
@@ -76,14 +88,24 @@ app.post("/getUser", (req, res) => {
   });
 });
 
-app.post("/updateAvatar", (req, res) => {
-  const { id, url } = req.body;
+app.post("/updateAvatar", upload.single("file"), (req, res) => {
+  const { id } = req.body;
+  const file = req.file.filename;
   const user = sessions[id].login;
-  const sql = "UPDATE `info` SET `avatarUrl`='"+url+"' WHERE `login` LIKE '"+user+"'";
-  con.query(sql, (err, result) => {
-    if (err) return res.json(err);
-    return res.json(result);
-  });
+  const sql =
+    "UPDATE `info` SET `avatarUrl`='" +
+    file +
+    "' WHERE `login` LIKE '" +
+    user +
+    "'";
+  try {
+    con.query(sql, (err, result) => {
+      if (err) return res.json(err);
+      return res.json(result);
+    });
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 try {
