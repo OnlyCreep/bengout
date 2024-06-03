@@ -24,12 +24,24 @@ export default function Settings() {
     } else document.location.href = "/login";
   }, [null]);
 
-  function upload() {
+  function uploadFile() {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("id", document.cookie.split("=")[1]);
     axios
-      .post("http://localhost:4000/updateAvatar", formData)
+      .post("http://localhost:4000/updateAvatarFile", formData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => console.log(e));
+  }
+
+  function uploadUrl() {
+    axios
+      .post("http://localhost:4000/updateAvatarUrl", {
+        id: document.cookie.split("=")[1],
+        url: newAvatar
+      })
       .then((res) => {
         console.log(res);
       })
@@ -41,7 +53,7 @@ export default function Settings() {
       <div className="settings-avatarBlock">
         <div
           className="settings-avatarBlock-avatar"
-          style={{ "--avatar": `url(images/${avatar})` }}
+          style={{ "--avatar": `url(${(avatar.includes("blob")||avatar.includes("http"))?avatar:"/images/"+avatar})` }}
         ></div>
         <div className="settings-avatarBlock-set">
           <div>
@@ -52,7 +64,10 @@ export default function Settings() {
               onChange={(e) => setNewAv(e.target.value)}
             />
             <button
-              onClick={() => setAvatar(newAvatar)}
+              onClick={() => {
+                setAvatar(newAvatar)
+                setFile(newAvatar)
+              }}
               className="settings-avatarBlock-set-url-but"
             >
               Загрузить
@@ -71,12 +86,17 @@ export default function Settings() {
               id="imgInp"
               onChange={(e) => {
                 setFile(e.target.files[0]);
-                console.log(e.target.files[0]);
+                setAvatar(URL.createObjectURL(e.target.files[0]))
               }}
             />
           </div>
         </div>
-        <button className="settings-avatarBlock-saveBut" onClick={upload}>
+        <button className="settings-avatarBlock-saveBut" onClick={()=>{
+          if(typeof file == "object")
+          uploadFile()
+        else
+        uploadUrl()
+        }}>
           Сохранить
         </button>
       </div>

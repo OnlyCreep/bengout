@@ -20,6 +20,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     float: left;
+    border: 2px solid #777;
 }
 
 .settings-avatarBlock-set {

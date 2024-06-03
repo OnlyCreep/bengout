@@ -88,13 +88,32 @@ app.post("/getUser", (req, res) => {
   });
 });
 
-app.post("/updateAvatar", upload.single("file"), (req, res) => {
+app.post("/updateAvatarFile", upload.single("file"), (req, res) => {
   const { id } = req.body;
   const file = req.file.filename;
   const user = sessions[id].login;
   const sql =
     "UPDATE `info` SET `avatarUrl`='" +
     file +
+    "' WHERE `login` LIKE '" +
+    user +
+    "'";
+  try {
+    con.query(sql, (err, result) => {
+      if (err) return res.json(err);
+      return res.json(result);
+    });
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+app.post("/updateAvatarUrl", (req, res) => {
+  const { id, url } = req.body;
+  const user = sessions[id].login;
+  const sql =
+    "UPDATE `info` SET `avatarUrl`='" +
+    url +
     "' WHERE `login` LIKE '" +
     user +
     "'";
