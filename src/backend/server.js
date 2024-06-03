@@ -15,18 +15,16 @@ const con = mysql.createConnection({
   database: "users",
 });
 
-con.connect(function (err) {
-  if (err) {
-    console.error("Error connecting to database: " + err.stack);
-    return;
-  }
-  console.log("Connected to database as id " + con.threadId);
-});
-
 app.post("/create", (req, res) => {
-    const { login, pass, email } = req.body;
-  const values = [login, pass, email, "https://kinopoiskapiunofficial.tech/images/posters/kp/1402937.jpg"];
-  const sql = "INSERT INTO `info`(`login`, `pass`, `email`, `avatarUrl`) VALUES (?)";
+  const { login, pass, email } = req.body;
+  const values = [
+    login,
+    pass,
+    email,
+    "https://kinopoiskapiunofficial.tech/images/posters/kp/1402937.jpg",
+  ];
+  const sql =
+    "INSERT INTO `info`(`login`, `pass`, `email`, `avatarUrl`) VALUES (?)";
   con.query(sql, [values], (err, result) => {
     const sessionId = uuid();
     sessions[sessionId] = { login, pass };
@@ -58,7 +56,7 @@ app.post("/login", (req, res) => {
 
 app.post("/test", (req, res) => {
   const { id } = req.body;
-  const user = sessions[id].login
+  const user = sessions[id].login;
   const sql = "SELECT * FROM `info` WHERE `login` LIKE (?)";
   con.query(sql, user, (err, result) => {
     if (err) return res.json({ Error: "Error singup query" });
@@ -69,12 +67,22 @@ app.post("/test", (req, res) => {
 });
 
 app.post("/getUser", (req, res) => {
-  const {id} = req.body
-  const user = sessions[id].login
+  const { id } = req.body;
+  const user = sessions[id].login;
   const sql = "SELECT * FROM `info` WHERE `login` LIKE (?)";
   con.query(sql, user, (err, result) => {
-    if(err) return res.json(err)
-    return res.json(result)
+    if (err) return res.json(err);
+    return res.json(result);
+  });
+});
+
+app.post("/updateAvatar", (req, res) => {
+  const { id, url } = req.body;
+  const user = sessions[id].login;
+  const sql = "UPDATE `info` SET `avatarUrl`='"+url+"' WHERE `login` LIKE '"+user+"'";
+  con.query(sql, (err, result) => {
+    if (err) return res.json(err);
+    return res.json(result);
   });
 });
 

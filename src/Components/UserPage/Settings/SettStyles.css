@@ -2,12 +2,14 @@
     width: 70%;
     margin: auto;
     margin-top: 5vh;
+    color: #999;
 }
 
 .settings-avatarBlock {
     background-color: #222;
     padding: 10px;
-    display: flex;
+    display: inline-table;
+    width: 100%;
 }
 
 .settings-avatarBlock-avatar {
@@ -17,6 +19,37 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    float: left;
+}
+
+.settings-avatarBlock-set {
+    height: max-content;
+    font-size: 1.4rem;
+    float: left;
+    width: max-content;
+    margin-left: 100px;
+}
+
+.settings-avatarBlock-set-url {
+    width: 490px;
+    background-color: #444;
+    border: none;
+    height: 40px;
+    border-radius: 100px;
+    color: white;
+    outline: none;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+.settings-avatarBlock-set-url-but {
+    border: none;
+    border-radius: 100px;
+    background-color: #444;
+    color: white;
+    height: 40px;
+    font-size: 1.2rem;
+    margin-left: 10px;
 }
 
 .settings-avatarBlock-set-upload_label {
@@ -40,4 +73,13 @@
     border-radius: 5px;
     cursor: pointer;
     z-index: 2;
+}
+
+.settings-avatarBlock-saveBut {
+    background-color: #E96E00;
+    color: white;
+    float: right;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 100px;
 }
