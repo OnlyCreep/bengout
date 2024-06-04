@@ -36,7 +36,7 @@ export default function UserPage() {
       {isLoaded && (
         <section className="userPage">
           <div style={{display: "flex"}}>
-          <div style={{"--img": `url(${avatar})`}} className="userPage-avatar"></div>
+          <div style={{"--img": `url(${(avatar.includes("blob")||avatar.includes("http"))?avatar:"/images/"+avatar})`}} className="userPage-avatar"></div>
           <div className="userPage-globalInfo">
           <h1 className="userPage-globalInfo-login">{login}</h1>
           <h5 className="userPage-globalInfo-login">{email}</h5>

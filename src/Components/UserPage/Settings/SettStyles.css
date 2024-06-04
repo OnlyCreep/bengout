@@ -1,86 +1,169 @@
+.settingsPanels {
+  display: flex;
+}
+
+.settingsPanels-li-panels {
+  list-style-type: none;
+  color: white;
+  margin-top: 10vh;
+  margin-left: 100px;
+}
+
+.settingsPanels-li-panels-opps {
+  font-size: 1.2rem;
+}
+
+.backButt {
+    color: #888;
+    font-size: 1.4rem;
+    position: relative;
+    top: 100px;
+}
+
+.settingsPanels-li-line {
+  height: 30px;
+  width: 2px;
+  background-color: white;
+  float: right;
+  transform: translateY(var(--oppheight));
+  transition: transform 400ms;
+}
+
+.settingsPanels-li-panels-opps li {
+  margin: 10px 0;
+  cursor: pointer;
+  height: 30px;
+}
+
 .settings {
-    width: 70%;
-    margin: auto;
-    margin-top: 5vh;
-    color: #999;
+  width: 70%;
+  margin: auto;
+  margin-top: 5vh;
+  color: #999;
 }
 
 .settings-avatarBlock {
-    background-color: #222;
-    padding: 10px;
-    display: inline-table;
-    width: 100%;
+  background-color: #222;
+  padding: 10px;
+  display: inline-table;
+  width: 100%;
 }
 
 .settings-avatarBlock-avatar {
-    background: var(--avatar);
-    width: 275px;
-    height: 400px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    float: left;
-    border: 2px solid #777;
+  background: var(--avatar);
+  width: 275px;
+  height: 400px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  float: left;
+  border: 2px solid #777;
 }
 
 .settings-avatarBlock-set {
-    height: max-content;
-    font-size: 1.4rem;
-    float: left;
-    width: max-content;
-    margin-left: 100px;
+  height: max-content;
+  font-size: 1.4rem;
+  float: left;
+  width: max-content;
+  margin-left: 100px;
 }
 
 .settings-avatarBlock-set-url {
-    width: 490px;
-    background-color: #444;
-    border: none;
-    height: 40px;
-    border-radius: 100px;
-    color: white;
-    outline: none;
-    padding-left: 10px;
-    margin-bottom: 20px;
+  width: 490px;
+  background-color: #444;
+  border: none;
+  height: 40px;
+  border-radius: 100px;
+  color: white;
+  outline: none;
+  padding-left: 10px;
+  margin-bottom: 20px;
 }
 
 .settings-avatarBlock-set-url-but {
-    border: none;
-    border-radius: 100px;
-    background-color: #444;
-    color: white;
-    height: 40px;
-    font-size: 1.2rem;
-    margin-left: 10px;
+  border: none;
+  border-radius: 100px;
+  background-color: #444;
+  color: white;
+  height: 40px;
+  font-size: 1.2rem;
+  margin-left: 10px;
+  padding: 0 15px;
+  transition: background-color 300ms;
 }
 
 .settings-avatarBlock-set-upload_label {
-    color: #888;
-    border: 1px solid;
-    height: 40px;
-    width: 200px;
-    text-align: center;
-    line-height: 40px;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    position: absolute;
-    z-index: 1;
+  color: #888;
+  border: 1px solid;
+  height: 40px;
+  width: max-content;
+  padding: 0 10px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 1;
 }
 
 .settings-avatarBlock-set-upload {
-    position: absolute;
-    height: 40px;
-    width: 40px;
-    padding-left: 200px;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 2;
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  padding-left: 200px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 2;
 }
 
-.settings-avatarBlock-saveBut {
-    background-color: #E96E00;
-    color: white;
-    float: right;
-    padding: 5px 15px;
-    border: none;
-    border-radius: 100px;
+.settings-avatarBlock-saveBut-label {
+  width: 150px;
+  position: relative;
+  top: 380px;
+  left: 160px;
+}
+
+.settings-avatarBlock-saveBut-but {
+  float: right;
+  background-color: #e96e00;
+  color: white;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 100px;
+  border: 2px solid #e96e00;
+  transition-property: background-color, color, border;
+  transition-duration: 300ms;
+}
+
+.settings-avatarBlock-saveBut-but:hover {
+  background-color: white;
+  color: #e96e00;
+  border: 2px solid;
+}
+
+.settings-avatarBlock-set-url-but:hover {
+  background-color: #777;
+}
+
+.settings-avatarBlock-set-url-but:active {
+  background-color: #999;
+}
+
+.settings-avatarBlock-set-url:focus {
+  border: 1px solid;
+}
+
+.settings-avatarBlock-set-upload-pos {
+  transition: filter 300ms;
+}
+
+.settings-avatarBlock-set-upload-pos:hover {
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+.LogNEmail {
+  width: 70%;
+  min-height: 10vh;
+  margin: auto;
+  color: #888;
 }
