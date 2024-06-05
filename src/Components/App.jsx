@@ -17,6 +17,11 @@ export default function App() {
   const [isAuth, setAuth] = useState(false);
   const [isLoaded, setDone] = useState(false);
 
+  const [login, setLogin] = useState("");
+  const [pass, setPass] = useState("");
+  const [email, setEmail] = useState("");
+  const [avatar, setAvatar] = useState("");
+
   useEffect(() => {
     fetch("response_1715176709774.json", {
       method: "GET",
@@ -50,7 +55,21 @@ export default function App() {
     <>
       {isLoaded && (
         <BrowserRouter>
-          <Context.Provider value={{ items, setUrl, isAuth }}>
+          <Context.Provider
+            value={{
+              items,
+              setUrl,
+              isAuth,
+              login,
+              pass,
+              email,
+              avatar,
+              setLogin,
+              setPass,
+              setEmail,
+              setAvatar,
+            }}
+          >
             <Routes>
               <Route
                 path="/"

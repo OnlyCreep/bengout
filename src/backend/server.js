@@ -127,6 +127,39 @@ app.post("/updateAvatarUrl", (req, res) => {
   }
 });
 
+app.post("/changeLogin", (req, res) => {
+  const { id, newLogin } = req.body;
+  const user = sessions[id].login;
+  const sql =
+    "UPDATE `info` SET `login`='" +
+    newLogin +
+    "' WHERE `login` LIKE '" +
+    user +
+    "'";
+  try {
+    con.query(sql, (err, result) => {
+      if (err) return res.json(err);
+    });
+    con.query("SELECT * FROM `info` WHERE `login` LIKE (?)", newLogin, (err, result)=>{
+      if (err) return res.json(err);
+      return res.json(result)
+    })
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+app.post("/loginVerify", (req, res) => {
+  const {login} = req.body
+  const sql = "SELECT * FROM `info` WHERE `login` LIKE (?)"
+  con.query(sql, login, (err, result) => {
+    if(result == "")
+      return res.json(Boolean(1))
+    else
+      return res.json(Boolean(0))
+  })
+})
+
 try {
   app.listen(4000, () => {
     console.log("Server is running");

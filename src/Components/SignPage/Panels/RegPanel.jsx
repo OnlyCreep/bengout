@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
+import { Context } from "../../Context";
 
 export default function RegPanel() {
-  const [login, setLogin] = useState("");
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+  const { login, email, pass, setLogin, setEmail, setPass} = useContext(Context)
   const [pass1, setPass1] = useState("");
   const [loginValid, setLoginValid] = useState("");
   const [passValid, setPassValid] = useState("");

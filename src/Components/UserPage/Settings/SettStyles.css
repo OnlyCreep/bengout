@@ -42,7 +42,7 @@
   color: #999;
 }
 
-.settings-avatarBlock {
+.settings-block {
   background-color: #222;
   padding: 10px;
   display: inline-table;
@@ -161,9 +161,53 @@
   filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
 }
 
-.LogNEmail {
-  width: 70%;
-  min-height: 10vh;
-  margin: auto;
-  color: #888;
+.settings-block-login-err_pop {
+  background-color: #333;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  border: 1px solid #888;
+}
+
+.settings-block-login {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+
+.settings-block-login-inpt {
+  outline: none;
+  border: 1px solid #333;
+  background-color: #222;
+  border-radius: 100px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  transition: transform 300ms;
+  color: white;
+}
+
+.settings-block-login-inpt:focus {
+  border: 1px solid white;
+  transform: scale(1.05);
+}
+
+.settings-block-login-but {
+  outline: none;
+  border: 1px solid #999;
+  color: white;
+  font-weight: 400;
+  background-color: #222;
+  border-radius: 100px;
+  padding: 5px 10px;
+  transition: transform 300ms;
+}
+
+.settings-block-login-but:hover {
+  transform: scale(1.05);
+}
+
+.settings-block-login-but:active {
+  transform: scale(0.95);
 }

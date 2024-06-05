@@ -40,7 +40,7 @@ export default function Settings() {
                 setPanel(<Email />);
               }}
             >
-              Почта
+              Email
             </li>
             <li
               onClick={() => {

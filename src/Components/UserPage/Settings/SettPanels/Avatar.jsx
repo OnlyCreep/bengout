@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { BiUpload } from "react-icons/bi";
+import { Context } from "../../../Context";
 
 export default function Avatar() {
-  const [avatar, setAvatar] = useState("");
+  const {avatar, setAvatar} = useContext(Context)
   const [newAvatar, setNewAv] = useState("");
   const [file, setFile] = useState();
   const [uploadStatus, setStatus] = useState("");
@@ -71,7 +72,7 @@ export default function Avatar() {
   return (
     <section className="settings">
       <h4>Аватар профиля</h4>
-      <div className="settings-avatarBlock">
+      <div className="settings-block">
         <div
           className="settings-avatarBlock-avatar"
           style={{

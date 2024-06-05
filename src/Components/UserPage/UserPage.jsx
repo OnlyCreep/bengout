@@ -8,9 +8,7 @@ import { BiDoorOpen } from "react-icons/bi";
 export default function UserPage() {
   const { isAuth } = useContext(Context);
   const [isLoaded, setDone] = useState(false);
-  const [avatar, setAvatar] = useState("");
-  const [login, setLogin] = useState("");
-  const [email, setEmail] = useState("");
+  const {avatar, setAvatar, login, setLogin, email, setEmail} = useContext(Context)
   useEffect(() => {
     if (!isAuth) document.location.href = "/login";
   }, [isAuth]);
@@ -28,7 +26,7 @@ export default function UserPage() {
   }, [null]);
 
   function leaveAccount() {
-    document.cookie = "session=";
+    document.cookie = 'session=; path=/; expires=-1'
     document.location.href = "/";
   }
   return (

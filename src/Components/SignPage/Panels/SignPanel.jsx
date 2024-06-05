@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
+import { Context } from "../../Context";
 
 export default function SignPanel() {
-  const [login, setLogin] = useState("");
-  const [pass, setPass] = useState("");
+  const { login, pass, setLogin, setPass } = useContext(Context)
   const [loginVal, setLoginVal] = useState("");
   const [passVal, setPassVal] = useState("");
 
@@ -17,7 +17,7 @@ export default function SignPanel() {
         if (res.data == "Failed") setPassVal("Пароль неверный");
         else if (res.data == "None") setLoginVal("Такого пользователя не существует");
         else {
-          document.cookie = `session=${res.data}`;
+          document.cookie = `session=${res.data}; path=/`;
           document.location.href = "/user"
         }
       })
