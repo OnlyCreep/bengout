@@ -7,6 +7,7 @@ import { Context } from "../Context";
 import GenresVars from "./GenresInfo/GenresVars";
 import { IoIosHeart } from "react-icons/io";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Search() {
   document.title = "Поиск";
@@ -14,7 +15,8 @@ export default function Search() {
   const [film, setFilms] = useState([]);
   const [rateStars, setRate] = useState(0);
   const [genresSel, setSelect] = useState([]);
-  const { setUrl } = useContext(Context);
+  const { setUrl, isAuth } = useContext(Context);
+  const [inlike, setInLike] = useState([]);
   const onKeyEnter = (e) => {
     var key = e.which;
     if (key === 13) {
@@ -37,6 +39,48 @@ export default function Search() {
       .then((json) => setFilms(json.items))
       .catch((err) => console.log(err));
   }, [null]);
+
+  useEffect( () => {
+    if (isAuth) {
+      axios
+        .post("http://localhost:4000/getInLike", {
+          id: document.cookie.split("=")[1],
+        })
+        .then((res) => {
+          console.log(res.data);
+          setInLike(res.data);
+        });
+    }
+  }, [null]);
+
+  useEffect( () => {
+    axios.post("http://localhost:4000/setInLike", {
+      id: document.cookie.split("=")[1],
+      films: inlike,
+    });
+  }, [inlike]);
+
+  async function inLike(id) {
+    axios
+      .post("http://localhost:4000/getInLike", {
+        id: document.cookie.split("=")[1],
+      })
+      .then((res) => {
+        setInLike([res.data]);
+        setInLike([...inlike, id]);
+      });
+  }
+
+  function inLikeRemove(id) {
+    axios
+      .post("http://localhost:4000/getInLike", {
+        id: document.cookie.split("=")[1],
+      })
+      .then((res) => {
+        setInLike([res.data]);
+        setInLike(inlike.filter((el) => el != id));
+      });
+  }
 
   function searchFilter() {
     if (
@@ -91,7 +135,6 @@ export default function Search() {
         .then((json) => setFilms(json.items))
         .catch((err) => console.log(err));
     }
-    console.log(film);
   }
   return (
     <Context.Provider
@@ -167,9 +210,32 @@ export default function Search() {
                     )}
                   </div>
                   <div className="films-card-buttons">
-                    <div className="films-card-buttons-like">
-                      <IoIosHeart />
-                    </div>
+                    {!inlike.includes(el.kinopoiskId) ? (
+                      <div
+                        className="films-card-buttons-like"
+                        onClick={() => {
+                          inLike(el.kinopoiskId);
+                          console.log("cas");
+                        }}
+                      >
+                        <IoIosHeart />
+                      </div>
+                    ) : (
+                      <div
+                        className="films-card-buttons-like"
+                        style={{
+                          backgroundColor: "white",
+                          color: "red",
+                          border: "1px solid white",
+                        }}
+                        onClick={() => {
+                          inLikeRemove(el.kinopoiskId);
+                          console.log("cas!");
+                        }}
+                      >
+                        <IoIosHeart />
+                      </div>
+                    )}
                     <Link
                       className="films-card-buttons-viewLink"
                       to={`/film:${el.kinopoiskId}`}

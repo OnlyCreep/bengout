@@ -10,6 +10,7 @@ import SignPage from "./SignPage/SignPage";
 import UserPage from "./UserPage/UserPage";
 import axios from "axios";
 import Settings from "./UserPage/Settings/Settings";
+import InLike from "./UserPage/InLike";
 
 export default function App() {
   const [items, setItems] = useState([]);
@@ -127,6 +128,15 @@ export default function App() {
                   <>
                     <NavElem />
                     <Settings />
+                  </>
+                }
+              />
+              <Route
+                path="/user/inlike"
+                element={
+                  <>
+                    <NavElem />
+                    <InLike />
                   </>
                 }
               />

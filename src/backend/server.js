@@ -140,24 +140,116 @@ app.post("/changeLogin", (req, res) => {
     con.query(sql, (err, result) => {
       if (err) return res.json(err);
     });
-    con.query("SELECT * FROM `info` WHERE `login` LIKE (?)", newLogin, (err, result)=>{
-      if (err) return res.json(err);
-      return res.json(result)
-    })
+    con.query(
+      "SELECT * FROM `info` WHERE `login` LIKE (?)",
+      newLogin,
+      (err, result) => {
+        if (err) return res.json(err);
+        return res.json(result);
+      }
+    );
   } catch (e) {
     console.log(e);
   }
 });
 
 app.post("/loginVerify", (req, res) => {
-  const {login} = req.body
-  const sql = "SELECT * FROM `info` WHERE `login` LIKE (?)"
+  const { login } = req.body;
+  const sql = "SELECT * FROM `info` WHERE `login` LIKE (?)";
   con.query(sql, login, (err, result) => {
-    if(result == "")
-      return res.json(Boolean(1))
-    else
-      return res.json(Boolean(0))
+    if (result == "") return res.json(Boolean(1));
+    else return res.json(Boolean(0));
+  });
+});
+
+app.post("/emailVerify", (req, res) => {
+  const { email } = req.body;
+  const sql = "SELECT * FROM `info` WHERE `email` LIKE (?)";
+  con.query(sql, email, (err, result) => {
+    if (result == "") return res.json(Boolean(1));
+    else return res.json(Boolean(0));
+  });
+});
+
+app.post("/changeEmail", (req, res) => {
+  const { id, newEmail } = req.body;
+  const user = sessions[id].login;
+  const sql =
+    "UPDATE `info` SET `email`='" +
+    newEmail +
+    "' WHERE `login` LIKE '" +
+    user +
+    "'";
+  try {
+    con.query(sql, (err, result) => {
+      if (err) return res.json(err);
+    });
+    con.query(
+      "SELECT * FROM `info` WHERE `login` LIKE (?)",
+      newEmail,
+      (err, result) => {
+        if (err) return res.json(err);
+        return res.json(result);
+      }
+    );
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+app.post("/verifyPassword", (req, res) => {
+  const { login, pass } = req.body;
+  const sql = "SELECT * FROM `info` WHERE `login` LIKE (?)";
+  con.query(sql, login, (err, result) => {
+    return res.json(result[0].pass == pass);
+  });
+});
+
+app.post("/changePassword", (req, res) => {
+  const { id, pass } = req.body;
+  const user = sessions[id].login;
+  const sql =
+    "UPDATE `info` SET `pass`='" +
+    pass +
+    "' WHERE `login` LIKE '" +
+    user +
+    "'";
+  try {
+    con.query(sql, (err, result) => {
+      if (err) return res.json(err);
+    });
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+app.post("/getInLike", (req, res) => {
+  const { id } = req.body
+  const user = sessions[id].login;
+  const sql = "SELECT * FROM `info` WHERE `login` LIKE (?)"
+  con.query(sql, user, (err, result)=>{
+    if(err) return res.json({Error: "Failled"})
+    return res.json(JSON.parse(result[0].inLike))
   })
+})
+
+app.post("/setInLike", (req, res) => {
+  const { id, films } = req.body
+  const user = sessions[id].login;
+  const filmsJson = JSON.stringify(films)
+  const sql =
+  "UPDATE `info` SET `inLike`='" +
+  filmsJson +
+  "' WHERE `login` LIKE '" +
+  user +
+  "'";
+try {
+  con.query(sql, (err, result) => {
+    if (err) return res.json(err);
+  });
+} catch (e) {
+  console.log(e);
+}
 })
 
 try {

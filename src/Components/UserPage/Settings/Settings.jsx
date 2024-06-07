@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./SettStyles.css";
 import Avatar from "./SettPanels/Avatar";
-import Login from "./SettPanels/Login";
+import LoginEmail from "./SettPanels/LoginEmail";
 import Password from "./SettPanels/Password";
-import Email from "./SettPanels/Email";
 
 export default function Settings() {
   const [panel, setPanel] = useState(<Avatar />);
@@ -29,22 +28,14 @@ export default function Settings() {
             <li
               onClick={() => {
                 setHeight(40);
-                setPanel(<Login />);
+                setPanel(<LoginEmail />);
               }}
             >
-              Логин
+              Логин и email
             </li>
             <li
               onClick={() => {
                 setHeight(80);
-                setPanel(<Email />);
-              }}
-            >
-              Email
-            </li>
-            <li
-              onClick={() => {
-                setHeight(120);
                 setPanel(<Password />);
               }}
             >
