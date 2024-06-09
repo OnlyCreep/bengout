@@ -10,6 +10,8 @@ export default function FilmPage() {
   const [film, setFilm] = useState([]);
   const { isAuth } = useContext(Context);
   const inlike_pand = useRef(null);
+  const dialog = useRef(null);
+  const modal = useRef(null);
   useEffect(() => {
     fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${urlAdress}`, {
       method: "GET",
@@ -59,7 +61,53 @@ export default function FilmPage() {
       i++ != film.genres.length - 1 ? "," : ""
     } `;
   }
-  return (
+  return (<>
+    <dialog
+    ref={modal}
+    className="dialog_wrapper"
+    onClick={() => {
+      if (dialog.current) {
+        dialog.current.style.transform = "translate(-50%, -50%) scale(0)";
+        modal.current.style.backgroundColor = "rgba(0, 0, 0, 0.0)";
+        setTimeout(() => {
+          if (modal.current) modal.current.style.zIndex = "-1";
+        }, 300);
+      }
+      document.body.style.overflow = "auto";
+    }}
+  ></dialog>
+    <div className="dialog_wrapper-modal" ref={dialog}>
+      <div className="dialog_wrapper-modal-logo">
+        <div className="dialog_wrapper-modal-logo-bc"></div>
+        <h1 className="dialog_wrapper-modal-logo-title">Bengout</h1>
+      </div>
+      <h3 className="dialog_wrapper-modal-title">Добро пожаловать!</h3>
+      <span className="dialog_wrapper-modal-span">
+        вы ещё не зарегестрировались на сайте
+      </span>
+      <div className="dialog_wrapper-modal-butts">
+
+        <button
+          className="dialog_wrapper-modal-butts-cancel dialog_wrapper-modal-butts-but"
+          onClick={() => {
+            if (dialog.current) {
+              dialog.current.style.transform = "translate(-50%, -50%) scale(0)";
+              modal.current.style.backgroundColor = "rgba(0, 0, 0, 0.0)";
+              setTimeout(() => {
+                if (modal.current) modal.current.style.zIndex = "-1";
+              }, 300);
+            }
+            document.body.style.overflow = "auto";
+          }}
+        >
+          Отмена
+        </button>
+        <a className="dialog_wrapper-modal-butts-sign dialog_wrapper-modal-butts-but"
+        href="/login">
+          Войти
+        </a>
+      </div>
+    </div>
     <section className="filmpage">
       <div className="inlike_overflow">
         <div
@@ -68,6 +116,7 @@ export default function FilmPage() {
           }`}
           ref={inlike_pand}
           onClick={() => {
+            if(isAuth){
             if (!inlike.includes(film.kinopoiskId)) {
               if (inlike_pand.current)
                 inlike_pand.current.classList.add("active");
@@ -76,6 +125,15 @@ export default function FilmPage() {
               if (inlike_pand.current)
                 inlike_pand.current.classList.remove("active");
               inLikeRemove(film.kinopoiskId);
+            }}
+            else{
+              if (dialog.current) {
+                dialog.current.style.transform = "translate(-50%, -50%) scale(1)";
+                modal.current.style.backgroundColor =
+                  "rgba(0, 0, 0, 0.4)";
+                modal.current.style.zIndex = "99";
+                document.body.style.overflow = "hidden";
+              }
             }
           }}
         >
@@ -115,6 +173,6 @@ export default function FilmPage() {
         </div>
       </div>
       <KinoboxPlayer value={urlAdress} />
-    </section>
+    </section></>
   );
 }
