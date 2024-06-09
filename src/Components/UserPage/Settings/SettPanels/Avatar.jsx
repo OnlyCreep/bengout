@@ -4,7 +4,7 @@ import { BiUpload } from "react-icons/bi";
 import { Context } from "../../../Context";
 
 export default function Avatar() {
-  const {avatar, setAvatar} = useContext(Context)
+  const { login, avatar, setAvatar } = useContext(Context);
   const [newAvatar, setNewAv] = useState("");
   const [file, setFile] = useState();
   const [uploadStatus, setStatus] = useState("");
@@ -12,6 +12,7 @@ export default function Avatar() {
   const uploadSet = useRef(null);
   const uploadSetFile = useRef(null);
   const urlInpt = useRef(null);
+  document.title = `Настройки | ${login}`;
 
   useEffect(() => {
     if (uploadSet.current)

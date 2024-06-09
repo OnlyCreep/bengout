@@ -171,6 +171,15 @@ app.post("/emailVerify", (req, res) => {
   });
 });
 
+app.post("/loginValid", (req, res) => {
+  const { login } = req.body;
+  const sql = "SELECT * FROM `info` WHERE `login` LIKE (?)";
+  con.query(sql, login, (err, result) => {
+    if (result == "") return res.json(Boolean(1));
+    else return res.json(Boolean(0));
+  });
+});
+
 app.post("/changeEmail", (req, res) => {
   const { id, newEmail } = req.body;
   const user = sessions[id].login;
@@ -209,8 +218,33 @@ app.post("/changePassword", (req, res) => {
   const { id, pass } = req.body;
   const user = sessions[id].login;
   const sql =
-    "UPDATE `info` SET `pass`='" +
-    pass +
+    "UPDATE `info` SET `pass`='" + pass + "' WHERE `login` LIKE '" + user + "'";
+  try {
+    con.query(sql, (err, result) => {
+      if (err) return res.json(err);
+    });
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+app.post("/getInLike", (req, res) => {
+  const { id } = req.body;
+  const user = sessions[id].login;
+  const sql = "SELECT * FROM `info` WHERE `login` LIKE (?)";
+  con.query(sql, user, (err, result) => {
+    if (err) return res.json({ Error: "Failled" });
+    return res.json(JSON.parse(result[0].inLike));
+  });
+});
+
+app.post("/setInLike", (req, res) => {
+  const { id, films } = req.body;
+  const user = sessions[id].login;
+  const filmsJson = JSON.stringify(films);
+  const sql =
+    "UPDATE `info` SET `inLike`='" +
+    filmsJson +
     "' WHERE `login` LIKE '" +
     user +
     "'";
@@ -222,35 +256,6 @@ app.post("/changePassword", (req, res) => {
     console.log(e);
   }
 });
-
-app.post("/getInLike", (req, res) => {
-  const { id } = req.body
-  const user = sessions[id].login;
-  const sql = "SELECT * FROM `info` WHERE `login` LIKE (?)"
-  con.query(sql, user, (err, result)=>{
-    if(err) return res.json({Error: "Failled"})
-    return res.json(JSON.parse(result[0].inLike))
-  })
-})
-
-app.post("/setInLike", (req, res) => {
-  const { id, films } = req.body
-  const user = sessions[id].login;
-  const filmsJson = JSON.stringify(films)
-  const sql =
-  "UPDATE `info` SET `inLike`='" +
-  filmsJson +
-  "' WHERE `login` LIKE '" +
-  user +
-  "'";
-try {
-  con.query(sql, (err, result) => {
-    if (err) return res.json(err);
-  });
-} catch (e) {
-  console.log(e);
-}
-})
 
 try {
   app.listen(4000, () => {

@@ -39,6 +39,7 @@ export default function LoginEmail() {
   const { login, setLogin, setPass, pass } = useContext(Context);
   const [newLogin, setNewLogin] = useState("");
   const [errLogin, setErrLogin] = useState("");
+  document.title = `Настройки | ${login}`;
   function verify() {
     axios
       .post("http://localhost:4000/loginVerify", {
@@ -54,7 +55,7 @@ export default function LoginEmail() {
   function newCookie() {
     axios
       .post("http://localhost:4000/login", {
-        login: newLogin||login,
+        login: newLogin || login,
         pass: pass,
       })
       .then((res) => {
@@ -108,8 +109,16 @@ export default function LoginEmail() {
               type="button"
               className="settings-block-login-but"
               onClick={() => {
-                if (newLogin) verify();
-                else setErrLogin("Поле пустое");
+                if (!newLogin) setErrLogin("Поле пустое");
+                else {
+                  if (newLogin.length < 2)
+                    setErrLogin("Логин слишком короткий");
+                  else {
+                    if (newLogin.length > 20)
+                      setErrLogin("Логин слишком длинный");
+                    else verify();
+                  }
+                }
               }}
             >
               Подтвердить
@@ -139,10 +148,9 @@ export default function LoginEmail() {
               className="settings-block-login-but"
               onClick={() => {
                 if (newEmail) {
-                  if (!(newEmail.includes(".")) || !(newEmail.includes("@"))) {
+                  if (!newEmail.includes(".") || !newEmail.includes("@")) {
                     setErrEmail("Email неверный");
-                  }
-                  else verifyEmail()
+                  } else verifyEmail();
                 } else setErrEmail("Поле пустое");
               }}
             >

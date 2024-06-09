@@ -1,0 +1,103 @@
+.dialog_wrapper {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog_wrapper-modal {
+    height: 75vh;
+    width: 35%;
+    background-color: white;
+    border-radius: 2px;
+    text-align: center;
+    user-select: none;
+    z-index: 999;
+    border-radius: 2px;
+    user-select: none;
+    position: absolute;
+    z-index: 999;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 300ms;
+}
+
+.dialog_wrapper-modal-logo {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog_wrapper-modal-logo-bc {
+    width: 200px;
+    height: 100px;
+    border-radius: 50%;
+    border-top: 5px solid #000;
+    position: absolute;
+    z-index: -1;
+}
+
+.dialog_wrapper-modal-logo-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #E96E00;
+}
+
+.dialog_wrapper-modal-title {
+    margin-top: 100px;
+    font-weight: 600;
+}
+
+.dialog_wrapper-modal-span {
+    margin-top: 20px;
+}
+
+.dialog_wrapper-modal-butts {
+    margin-top: 215px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(211, 255, 255);
+    height: 15vh;
+    border-top: 1px solid rgb(183, 255, 255);
+}
+
+.dialog_wrapper-modal-butts-but {
+    padding: 5px 0;
+    width: 250px;
+    border: none;
+    border-radius: 2px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin: auto;
+    transition-property: background-color, color;
+    transition-duration: 300ms;
+}
+
+.dialog_wrapper-modal-butts-cancel {
+    background-color: #666;
+    color: white;
+}
+
+.dialog_wrapper-modal-butts-sign {
+    background-color: rgb(0, 175, 0);
+    color: white;
+}
+
+.dialog_wrapper-modal-butts-cancel:hover {
+    background-color: red;
+}
+
+.dialog_wrapper-modal-butts-sign:hover {
+    background-color: white;
+    color: #E96E00;
+}

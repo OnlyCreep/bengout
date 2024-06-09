@@ -8,6 +8,7 @@ export default function Password() {
   const [err, setErr] = useState("");
   const [thisPass, setTPass] = useState("");
   const [newPass, setNew] = useState("");
+  document.title = `Настройки | ${login}`;
   useEffect(() => {
     if (document.cookie.split("=")[1]) {
       axios

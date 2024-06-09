@@ -8,22 +8,30 @@ import GenresVars from "./GenresInfo/GenresVars";
 import { IoIosHeart } from "react-icons/io";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./ModalStyles.css";
 
 export default function Search() {
   document.title = "Поиск";
+
+  const { setUrl, isAuth } = useContext(Context);
+
   const [realYear, setRealYear] = useState("Не указан");
   const [film, setFilms] = useState([]);
   const [rateStars, setRate] = useState(0);
   const [genresSel, setSelect] = useState([]);
-  const { setUrl, isAuth } = useContext(Context);
   const [inlike, setInLike] = useState([]);
+
   const onKeyEnter = (e) => {
     var key = e.which;
     if (key === 13) {
       searchFilter();
     }
   };
-  let inputName = useRef(null);
+
+  const inputName = useRef(null);
+  const dialog = useRef(null);
+  const modal = useRef(null);
+
   useEffect(() => {
     fetch(
       `https://kinopoiskapiunofficial.tech/api/v2.2/films/collections?type=TOP_POPULAR_ALL&page=2`,
@@ -40,46 +48,34 @@ export default function Search() {
       .catch((err) => console.log(err));
   }, [null]);
 
-  useEffect( () => {
+  useEffect(() => {
     if (isAuth) {
       axios
         .post("http://localhost:4000/getInLike", {
           id: document.cookie.split("=")[1],
         })
         .then((res) => {
-          console.log(res.data);
-          setInLike(res.data);
+          if (res.data != null) {
+            setInLike(res.data);
+          }
         });
     }
   }, [null]);
 
-  useEffect( () => {
+  function inLike(id) {
+    setInLike([...inlike, id]);
     axios.post("http://localhost:4000/setInLike", {
       id: document.cookie.split("=")[1],
-      films: inlike,
+      films: [...inlike, id],
     });
-  }, [inlike]);
-
-  async function inLike(id) {
-    axios
-      .post("http://localhost:4000/getInLike", {
-        id: document.cookie.split("=")[1],
-      })
-      .then((res) => {
-        setInLike([res.data]);
-        setInLike([...inlike, id]);
-      });
   }
 
   function inLikeRemove(id) {
-    axios
-      .post("http://localhost:4000/getInLike", {
-        id: document.cookie.split("=")[1],
-      })
-      .then((res) => {
-        setInLike([res.data]);
-        setInLike(inlike.filter((el) => el != id));
-      });
+    setInLike(inlike.filter((el) => el != id));
+    axios.post("http://localhost:4000/setInLike", {
+      id: document.cookie.split("=")[1],
+      films: inlike.filter((el) => el != id),
+    });
   }
 
   function searchFilter() {
@@ -147,6 +143,52 @@ export default function Search() {
         setSelect,
       }}
     >
+      <dialog
+        ref={modal}
+        className="dialog_wrapper"
+        onClick={() => {
+          if (dialog.current) {
+            dialog.current.style.transform = "translate(-50%, -50%) scale(0)";
+            modal.current.style.backgroundColor = "rgba(0, 0, 0, 0.0)";
+            setTimeout(() => {
+              if (modal.current) modal.current.style.zIndex = "-1";
+            }, 300);
+          }
+          document.body.style.overflow = "auto";
+        }}
+      ></dialog>
+        <div className="dialog_wrapper-modal" ref={dialog}>
+          <div className="dialog_wrapper-modal-logo">
+            <div className="dialog_wrapper-modal-logo-bc"></div>
+            <h1 className="dialog_wrapper-modal-logo-title">Bengout</h1>
+          </div>
+          <h3 className="dialog_wrapper-modal-title">Добро пожаловать!</h3>
+          <span className="dialog_wrapper-modal-span">
+            вы ещё не зарегестрировались на сайте
+          </span>
+          <div className="dialog_wrapper-modal-butts">
+
+            <button
+              className="dialog_wrapper-modal-butts-cancel dialog_wrapper-modal-butts-but"
+              onClick={() => {
+                if (dialog.current) {
+                  dialog.current.style.transform = "translate(-50%, -50%) scale(0)";
+                  modal.current.style.backgroundColor = "rgba(0, 0, 0, 0.0)";
+                  setTimeout(() => {
+                    if (modal.current) modal.current.style.zIndex = "-1";
+                  }, 300);
+                }
+                document.body.style.overflow = "auto";
+              }}
+            >
+              Отмена
+            </button>
+            <a className="dialog_wrapper-modal-butts-sign dialog_wrapper-modal-butts-but"
+            href="/login">
+              Войти
+            </a>
+          </div>
+        </div>
       <section className="searchbar">
         <aside className="searchbar-sidebar">
           <ul className="searchbar-sidebar-opps">
@@ -214,8 +256,15 @@ export default function Search() {
                       <div
                         className="films-card-buttons-like"
                         onClick={() => {
-                          inLike(el.kinopoiskId);
-                          console.log("cas");
+                          if (!isAuth) {
+                            if (dialog.current) {
+                              dialog.current.style.transform = "translate(-50%, -50%) scale(1)";
+                              modal.current.style.backgroundColor =
+                                "rgba(0, 0, 0, 0.4)";
+                              modal.current.style.zIndex = "99";
+                              document.body.style.overflow = "hidden";
+                            }
+                          } else inLike(el.kinopoiskId);
                         }}
                       >
                         <IoIosHeart />
@@ -230,7 +279,6 @@ export default function Search() {
                         }}
                         onClick={() => {
                           inLikeRemove(el.kinopoiskId);
-                          console.log("cas!");
                         }}
                       >
                         <IoIosHeart />

@@ -1,10 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
-import { Context } from "../../Context";
 
 export default function RegPanel() {
-  const { login, email, pass, setLogin, setEmail, setPass} = useContext(Context)
+  const [login, setLogin] = useState("");
+  const [pass, setPass] = useState("");
+  const [email, setEmail] = useState("");
   const [pass1, setPass1] = useState("");
   const [loginValid, setLoginValid] = useState("");
   const [passValid, setPassValid] = useState("");
@@ -21,28 +22,47 @@ export default function RegPanel() {
         email: email,
       })
       .then((res) => {
-          document.cookie = `session=${res.data}`;
-          document.location.href = "/user"
-      })
+        document.cookie = `session=${res.data}`;
+        document.location.href = "/user";
+      });
   };
 
   function verifySqlEmail(verify) {
     if (!verify) {
-      setEmailValid("Такой email уже существует")
-      setEmailValidVer(false)
-    }
-    else {
+      setEmailValid("Такой email уже существует");
+      setEmailValidVer(false);
+      setEmail("");
+      console.log("scas");
+    } else {
+      login_valid();
+      console.log(!verify);
       setEmailValid("");
-      upload();
-      setEmailValidVer(false)
+
+      setEmailValidVer(false);
     }
   }
 
+  function login_valid() {
+    axios
+      .post("http://localhost:4000/loginValid", { login: login })
+      .then((res) => {
+        if (res.data) {
+          console.log("scas");
+          upload();
+        } else {
+          console.log("scas");
+          setLoginValid("Пользователь с таким логином уже существует");
+          setLogin("");
+          setLoginValidVer(false);
+        }
+      });
+  }
+
   useEffect(() => {
-    if (loginValidVer && passValidVer && emailValidVer){
-      validSqlEmail(email)
-    };
-  }, [loginValidVer, passValidVer, emailValidVer])
+    if (loginValidVer && passValidVer && emailValidVer) {
+      validSqlEmail(email);
+    }
+  }, [loginValidVer, passValidVer, emailValidVer]);
 
   function cyrillicTest(str) {
     return /[а-яА-ЯЁё]/.test(str);
@@ -54,20 +74,27 @@ export default function RegPanel() {
         email: email,
       })
       .then((res) => {
-        verifySqlEmail(res.data == "true")
-      })
+        verifySqlEmail(res.data == "true");
+      });
   }
 
   const valid = () => {
     if (cyrillicTest(login)) {
       setLoginValid("Логин должен содержать только латинские буквы");
       setLoginValidVer(false);
+      setLogin("");
     } else if (login == "") {
       setLoginValid("Введите логин");
       setLoginValidVer(false);
+      setLogin("");
     } else if (login.length < 2) {
       setLoginValid("Логин слишком короткий");
       setLoginValidVer(false);
+      setLogin("");
+    } else if (login.length > 20) {
+      setLoginValid("Логин слишком длинный");
+      setLoginValidVer(false);
+      setLogin("");
     } else if (true) {
       setLoginValid("");
       setLoginValidVer(true);
@@ -76,12 +103,23 @@ export default function RegPanel() {
     if (pass !== pass1) {
       setPassValid("Пароли не совпадают");
       setPassValidVer(false);
+      setPass("");
+      setPass1("");
     } else if (pass == "") {
       setPassValid("Введите пароль");
       setPassValidVer(false);
+      setPass("");
+      setPass1("");
     } else if (pass.length < 8) {
       setPassValid("Пароль слишком короткий");
       setPassValidVer(false);
+      setPass("");
+      setPass1("");
+    } else if (pass.length > 20) {
+      setPassValid("Пароль слишком длинный");
+      setPassValidVer(false);
+      setPass("");
+      setPass1("");
     } else {
       setPassValid("");
       setPassValidVer(true);
@@ -90,12 +128,15 @@ export default function RegPanel() {
     if (email == "") {
       setEmailValid("Введите email");
       setEmailValidVer(false);
+      setEmail("");
     } else if (!email.includes("@") || !email.includes(".")) {
       setEmailValid("Неверный email");
       setEmailValidVer(false);
+      setEmail("");
     } else if (email.length < 4) {
       setEmailValid("Неверный email");
       setEmailValidVer(false);
+      setEmail("");
     } else {
       setEmailValid("");
       setEmailValidVer(true);
@@ -108,59 +149,99 @@ export default function RegPanel() {
           {loginValid}
         </label>
         <input
-          placeholder="Логин"
+          placeholder=""
           className="signSection-sign_container-signElem-panel-inpt-reg"
           style={{ border: `${loginValid ? "1px solid red" : ""}` }}
           onChange={(e) => {
             setLogin(e.target.value);
+            setLoginValid("");
           }}
+          onFocus={() => setLoginValid("")}
           name="login"
           autoComplete="off"
           type="text"
+          value={login}
         />
+        <label
+          className={`signSection-sign_container-signElem-panel-inpt-animLabel reg ${
+            login ? "active" : ""
+          }`}
+        >
+          Логин
+        </label>
       </div>
       <div className="signSection-sign_container-signElem-panel-validVer">
         <label className="signSection-sign_container-signElem-panel-validVer-label">
           {emailValid}
         </label>
         <input
-          placeholder="Email"
+          placeholder=""
           className="signSection-sign_container-signElem-panel-inpt-reg"
           style={{ border: `${emailValid ? "1px solid red" : ""}` }}
           onChange={(e) => {
             setEmail(e.target.value);
           }}
+          onFocus={() => setEmailValid("")}
+          value={email}
           name="email"
           autoComplete="off"
           type="text"
         />
+        <label
+          className={`signSection-sign_container-signElem-panel-inpt-animLabel reg ${
+            email ? "active" : ""
+          }`}
+        >
+          Email
+        </label>
       </div>
       <div className="signSection-sign_container-signElem-panel-validVer">
         <label className="signSection-sign_container-signElem-panel-validVer-label">
           {passValid}
         </label>
         <input
-          placeholder="Пароль"
+          placeholder=""
           className="signSection-sign_container-signElem-panel-inpt-reg"
           style={{ border: `${passValid ? "1px solid red" : ""}` }}
           onChange={(e) => {
             setPass(e.target.value);
           }}
+          onFocus={() => setPassValid("")}
+          value={pass}
           name="pass"
           autoComplete="off"
           type="text"
         />
+        <label
+          className={`signSection-sign_container-signElem-panel-inpt-animLabel reg ${
+            pass ? "active" : ""
+          }`}
+        >
+          Пароль
+        </label>
       </div>
       <div className="signSection-sign_container-signElem-panel-validVer">
         <label className="signSection-sign_container-signElem-panel-validVer-label"></label>
         <input
-          placeholder="Повтор пароля"
+          placeholder=""
           className="signSection-sign_container-signElem-panel-inpt-reg"
           style={{ border: `${passValid ? "1px solid red" : ""}` }}
           onChange={(e) => {
             setPass1(e.target.value);
           }}
+          onFocus={() => setPassValid("")}
+          value={pass1}
+          name="pass"
+          autoComplete="off"
+          type="text"
         />
+        <label
+          className={`signSection-sign_container-signElem-panel-inpt-animLabel reg ${
+            pass1 ? "active" : ""
+          }`}
+        >
+          Повтор пароля
+        </label>
       </div>
       <button
         type="button"

@@ -10,6 +10,7 @@ export default function UserPage() {
   const [isLoaded, setDone] = useState(false);
   const { avatar, setAvatar, login, setLogin, email, setEmail } =
     useContext(Context);
+  document.title = `Личный кабинет | ${login}`;
   useEffect(() => {
     if (!isAuth) document.location.href = "/login";
   }, [isAuth]);
@@ -61,11 +62,7 @@ export default function UserPage() {
             <SlSettings />
             Настройки
           </a>
-          <a
-            className="userPage-leaveBut"
-            href="login"
-            onClick={leaveAccount}
-          >
+          <a className="userPage-leaveBut" href="login" onClick={leaveAccount}>
             <BiDoorOpen />
             Выйти
           </a>

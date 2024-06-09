@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { Context } from "../../Context";
 
 export default function SignPanel() {
-  const { login, pass, setLogin, setPass } = useContext(Context)
+  const [login, setLogin] = useState("");
+  const [pass, setPass] = useState("");
   const [loginVal, setLoginVal] = useState("");
   const [passVal, setPassVal] = useState("");
 
@@ -14,23 +14,26 @@ export default function SignPanel() {
         pass: pass,
       })
       .then((res) => {
-        if (res.data == "Failed") setPassVal("Пароль неверный");
-        else if (res.data == "None") setLoginVal("Такого пользователя не существует");
+        if (res.data == "Failed") {
+          setPass("")
+          setPassVal("Пароль неверный")}
+        else if (res.data == "None"){
+          setLogin("")
+          setLoginVal("Такого пользователя не существует");}
         else {
           document.cookie = `session=${res.data}; path=/`;
-          document.location.href = "/user"
+          document.location.href = "/user";
         }
-      })
+      });
   };
 
   const validInpt = () => {
-    if (login == "") setLoginVal("Введите логин")
-      else setLoginVal("")
-    if (pass == "") setPassVal("Введите пароль")
-      else setPassVal("")
+    if (login == "") setLoginVal("Введите логин");
+    else setLoginVal("");
+    if (pass == "") setPassVal("Введите пароль");
+    else setPassVal("");
 
-    if(login != "" && pass != "")
-      upload()
+    if (login != "" && pass != "") upload();
   };
 
   return (
@@ -40,26 +43,44 @@ export default function SignPanel() {
           {loginVal}
         </label>
         <input
-          placeholder="Логин"
+          placeholder=""
           className="signSection-sign_container-signElem-panel-inpt-sign"
           style={{ border: `${loginVal ? "1px solid red" : ""}` }}
           onChange={(e) => {
             setLogin(e.target.value);
           }}
+          onFocus={() => setLoginVal("")}
+          value={login}
         />
+        <label
+          className={`signSection-sign_container-signElem-panel-inpt-animLabel sign ${
+            login ? "active" : ""
+          }`}
+        >
+          Логин
+        </label>
       </div>{" "}
       <div className="signSection-sign_container-signElem-panel-validVer">
         <label className="signSection-sign_container-signElem-panel-validVer-label">
           {passVal}
         </label>
         <input
-          placeholder="Пароль"
+          placeholder=""
           className="signSection-sign_container-signElem-panel-inpt-sign"
           style={{ border: `${passVal ? "1px solid red" : ""}` }}
           onChange={(e) => {
             setPass(e.target.value);
           }}
+          onFocus={() => setPassVal("")}
+          value={pass}
         />
+        <label
+          className={`signSection-sign_container-signElem-panel-inpt-animLabel sign ${
+            pass ? "active" : ""
+          }`}
+        >
+          Пароль
+        </label>
       </div>
       <button
         type="button"

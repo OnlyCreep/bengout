@@ -7,7 +7,7 @@
 .bg-body-tertiary {
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 80;
   width: 100%;
 }
 

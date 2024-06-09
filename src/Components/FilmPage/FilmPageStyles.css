@@ -61,14 +61,48 @@
   height: 200px;
   border-radius: 50%;
   padding: 10px;
-  background: linear-gradient(#EE7F1D, #EE7F1D) content-box,
+  background: linear-gradient(#ee7f1d, #ee7f1d) content-box,
     linear-gradient(var(--v), #f2f2f2 50%, transparent 0) 0 /
       min(100%, (50 - var(--p)) * 100%),
-    linear-gradient(var(--v), transparent 50%, #BB5800 0) 0 /
+    linear-gradient(var(--v), transparent 50%, #bb5800 0) 0 /
       min(100%, (var(--p) - 50) * 100%),
-    linear-gradient(to right, #EE7F1D 50%, #BB5800 0);
+    linear-gradient(to right, #ee7f1d 50%, #bb5800 0);
 }
 
 .rateVar {
   font-size: 1rem;
+}
+
+.inlike_overflow {
+  overflow: hidden;
+  position: absolute;
+  margin-top: -50px;
+  right: 15%;
+}
+
+.inlike_block {
+  width: 40px;
+  height: 100px;
+  background-color: #ee7f1d;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 50% 50%, 0% 75%, 0% 0%);
+  text-align: center;
+  line-height: 55px;
+  font-size: 2rem;
+  font-weight: 600;
+  color: white;
+  transition-property: background-color, color, transform;
+  transition-duration: 300ms;
+  cursor: pointer;
+  transform: translateY(-10px);
+}
+
+.inlike_block:hover {
+  color: #ee7f1d;
+  background-color: white;
+}
+
+.inlike_block.active {
+  color: #ee7f1d;
+  background-color: white;
+  transform: translateY(0);
 }
